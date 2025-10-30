@@ -3,6 +3,14 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+// Jika deploy ke https://xternal1.github.io/resume-analyzer,
+// set base ke '/resume-analyzer/'.
+// Jika deploy ke custom domain (www.eventhorizon.com), gunakan base: '/'
 export default defineConfig({
+  base: "/resume-analyzer/",
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  build: {
+    // outDir default = 'dist' (bisa diubah kalau perlu)
+    outDir: "dist"
+  }
 });
