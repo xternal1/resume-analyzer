@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { cn } from "~/lib/utils";
 import {
   Accordion,
@@ -7,6 +7,10 @@ import {
   AccordionItem,
 } from "./Accordion";
 import ScoreBadge from "./ScoreBadge";
+import useFeedbackStore, { type Category, type Feedback } from "stores/feedbackStores";
+
+
+const emptyCategory = (): Category => ({ score: 0, tips: [] });
 
 const CategoryHeader = ({
   title,
@@ -87,49 +91,56 @@ const CategoryContent = ({
   );
 };
 
-const Details = ({ feedback }: { feedback: Feedback }) => {
+const Details = ({ feedback }: { feedback?: Feedback }) => {
+
+  const setFeedback = useFeedbackStore((s) => s.setFeedback);
+
+
+  const tone = useFeedbackStore((s) => s.feedback?.toneAndStyle ?? emptyCategory());
+  const content = useFeedbackStore((s) => s.feedback?.content ?? emptyCategory());
+  const structure = useFeedbackStore((s) => s.feedback?.structure ?? emptyCategory());
+  const skills = useFeedbackStore((s) => s.feedback?.skills ?? emptyCategory());
+
+  useEffect(() => {
+    if (feedback) setFeedback(feedback);
+  }, [feedback, setFeedback]);
+
   return (
     <div className="flex flex-col gap-4 w-full">
       <Accordion>
         <AccordionItem id="tone-style">
           <AccordionHeader itemId="tone-style">
-            <CategoryHeader
-              title="Tone & Style"
-              categoryScore={feedback.toneAndStyle.score}
-            />
+            <CategoryHeader title="Tone & Style" categoryScore={tone.score} />
           </AccordionHeader>
           <AccordionContent itemId="tone-style">
-            <CategoryContent tips={feedback.toneAndStyle.tips} />
+            <CategoryContent tips={tone.tips} />
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem id="content">
           <AccordionHeader itemId="content">
-            <CategoryHeader title="Content" categoryScore={feedback.content.score} />
+            <CategoryHeader title="Content" categoryScore={content.score} />
           </AccordionHeader>
           <AccordionContent itemId="content">
-            <CategoryContent tips={feedback.content.tips} />
+            <CategoryContent tips={content.tips} />
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem id="structure">
           <AccordionHeader itemId="structure">
-            <CategoryHeader
-              title="Structure"
-              categoryScore={feedback.structure.score}
-            />
+            <CategoryHeader title="Structure" categoryScore={structure.score} />
           </AccordionHeader>
           <AccordionContent itemId="structure">
-            <CategoryContent tips={feedback.structure.tips} />
+            <CategoryContent tips={structure.tips} />
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem id="skills">
           <AccordionHeader itemId="skills">
-            <CategoryHeader title="Skills" categoryScore={feedback.skills.score} />
+            <CategoryHeader title="Skills" categoryScore={skills.score} />
           </AccordionHeader>
           <AccordionContent itemId="skills">
-            <CategoryContent tips={feedback.skills.tips} />
+            <CategoryContent tips={skills.tips} />
           </AccordionContent>
         </AccordionItem>
       </Accordion>

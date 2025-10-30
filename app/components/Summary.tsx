@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ScoreGauge from "./ScoreGauge";
 import ScoreBadge from "./ScoreBadge";
+import useFeedbackStore, { type Category, type Feedback } from "stores/feedbackStores";
+
+const emptyCategory = (): Category => ({ score: 0, tips: [] });
 
 const Category = ({ title, score }: { title: string; score: number }) => {
   const textColor =
@@ -22,11 +25,24 @@ const Category = ({ title, score }: { title: string; score: number }) => {
   );
 };
 
-const Summary = ({ feedback }: { feedback: Feedback }) => {
+const Summary = ({ feedback }: { feedback?: Feedback }) => {
+
+  const setFeedback = useFeedbackStore((s) => s.setFeedback);
+
+  const overall = useFeedbackStore((s) => s.feedback?.overallScore ?? 0);
+  const tone = useFeedbackStore((s) => s.feedback?.toneAndStyle ?? emptyCategory());
+  const content = useFeedbackStore((s) => s.feedback?.content ?? emptyCategory());
+  const structure = useFeedbackStore((s) => s.feedback?.structure ?? emptyCategory());
+  const skills = useFeedbackStore((s) => s.feedback?.skills ?? emptyCategory());
+
+  useEffect(() => {
+    if (feedback) setFeedback(feedback);
+  }, [feedback, setFeedback]);
+
   return (
     <div className="bg-white rounded-2xl shadow-md w-full">
       <div className="flex flex-row max-sm:flex-col items-center p-4 gap-8">
-        <ScoreGauge score={feedback.overallScore} />
+        <ScoreGauge score={overall} />
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-bold">Your Resume Score</h2>
           <p className="text-sm text-gray-500">
@@ -36,10 +52,10 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
       </div>
 
       <div className="px-4 pb-4 pt-2">
-        <Category title="Tone & Style" score={feedback.toneAndStyle.score} />
-        <Category title="Content" score={feedback.content.score} />
-        <Category title="Structure" score={feedback.structure.score} />
-        <Category title="Skills" score={feedback.skills.score} />
+        <Category title="Tone & Style" score={tone.score} />
+        <Category title="Content" score={content.score} />
+        <Category title="Structure" score={structure.score} />
+        <Category title="Skills" score={skills.score} />
       </div>
     </div>
   );
