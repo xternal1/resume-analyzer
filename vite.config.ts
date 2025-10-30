@@ -7,7 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // set base ke '/resume-analyzer/'.
 // Jika deploy ke custom domain (www.eventhorizon.com), gunakan base: '/'
 export default defineConfig({
-  base: "/resume-analyzer/",
+
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   build: {
     // outDir default = 'dist' (bisa diubah kalau perlu)
