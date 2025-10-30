@@ -1,0 +1,109 @@
+{
+  "_chunk-OIYGIGL5-BqXurzTp.js": {
+    "file": "assets/chunk-OIYGIGL5-BqXurzTp.js",
+    "name": "chunk-OIYGIGL5"
+  },
+  "_navbar-DvHKnL0k.js": {
+    "file": "assets/navbar-DvHKnL0k.js",
+    "name": "navbar",
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js"
+    ]
+  },
+  "_puter-Ca5OHvpr.js": {
+    "file": "assets/puter-Ca5OHvpr.js",
+    "name": "puter",
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js"
+    ]
+  },
+  "_utils-LCX7tCys.js": {
+    "file": "assets/utils-LCX7tCys.js",
+    "name": "utils"
+  },
+  "app/root.tsx?__react-router-build-client-route": {
+    "file": "assets/root-CRDjykQ9.js",
+    "name": "root",
+    "src": "app/root.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_puter-Ca5OHvpr.js"
+    ],
+    "css": [
+      "assets/root-DTwABG39.css"
+    ]
+  },
+  "app/routes/auth.tsx?__react-router-build-client-route": {
+    "file": "assets/auth-yGODM1Zn.js",
+    "name": "auth",
+    "src": "app/routes/auth.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_puter-Ca5OHvpr.js"
+    ]
+  },
+  "app/routes/home.tsx?__react-router-build-client-route": {
+    "file": "assets/home-V7D9W49d.js",
+    "name": "home",
+    "src": "app/routes/home.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_puter-Ca5OHvpr.js",
+      "_navbar-DvHKnL0k.js"
+    ]
+  },
+  "app/routes/resume.tsx?__react-router-build-client-route": {
+    "file": "assets/resume-C4gX1ZoQ.js",
+    "name": "resume",
+    "src": "app/routes/resume.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_utils-LCX7tCys.js",
+      "_puter-Ca5OHvpr.js"
+    ]
+  },
+  "app/routes/upload.tsx?__react-router-build-client-route": {
+    "file": "assets/upload-CQaRjqq5.js",
+    "name": "upload",
+    "src": "app/routes/upload.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_utils-LCX7tCys.js",
+      "_puter-Ca5OHvpr.js",
+      "_navbar-DvHKnL0k.js"
+    ],
+    "dynamicImports": [
+      "node_modules/pdfjs-dist/build/pdf.mjs"
+    ]
+  },
+  "app/routes/wipe.tsx?__react-router-build-client-route": {
+    "file": "assets/wipe-BmFa9gYT.js",
+    "name": "wipe",
+    "src": "app/routes/wipe.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js",
+      "_puter-Ca5OHvpr.js"
+    ]
+  },
+  "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx": {
+    "file": "assets/entry.client-D2Mv8qHq.js",
+    "name": "entry.client",
+    "src": "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx",
+    "isEntry": true,
+    "imports": [
+      "_chunk-OIYGIGL5-BqXurzTp.js"
+    ]
+  },
+  "node_modules/pdfjs-dist/build/pdf.mjs": {
+    "file": "assets/pdf-CPjZbJmk.js",
+    "name": "pdf",
+    "src": "node_modules/pdfjs-dist/build/pdf.mjs",
+    "isDynamicEntry": true
+  }
+}
