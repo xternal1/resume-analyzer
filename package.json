@@ -2,11 +2,15 @@
   "name": "my-app",
   "private": true,
   "type": "module",
+  "homepage": "https://xternal1.github.io/resume-analyzer",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+  "dev": "vite",
+  "build": "vite build",
+  "postbuild": "node scripts/create-404.js",
+  "start": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+  "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@react-router/node": "^7.9.2",
