@@ -47,6 +47,9 @@ interface PuterStore {
   error: string | null;
   puterReady: boolean;
   auth: {
+    logout: any;
+    destroySession: any;
+    clear: any;
     user: PuterUser | null;
     isAuthenticated: boolean;
     signIn: () => Promise<void>;

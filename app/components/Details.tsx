@@ -9,6 +9,11 @@ import {
 import ScoreBadge from "./ScoreBadge";
 import useFeedbackStore, { type Category, type Feedback } from "stores/feedbackStores";
 
+export const meta = () => ([
+  { title: 'Resumind | Review' },
+  { name: 'description', content: 'Log into your account!' },
+])
+
 
 const emptyCategory = (): Category => ({ score: 0, tips: [] });
 

@@ -14,8 +14,19 @@ interface FSItem {
 }
 
 interface PuterUser {
-  uuid: string;
-  username: string;
+  id?: string;
+  uid?: string;
+
+  // properti profile yang dipakai di app
+  name?: string;
+  displayName?: string;
+  email?: string;
+  imageUrl?: string;
+  photoURL?: string;
+  avatar?: string;
+
+  // tambahan generic supaya tidak kaku
+  [key: string]: any;
 }
 
 interface KVItem {
