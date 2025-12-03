@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { formatSize } from '~/lib/utils';
 
@@ -7,14 +7,17 @@ interface FileUploaderProps {
 }
 
 const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
     const onDrop = useCallback((acceptedFiles: File[]) => {
         const file = acceptedFiles[0] || null;
+        setSelectedFile(file);
         onFileSelect?.(file);
     }, [onFileSelect]);
 
     const maxFileSize = 20 * 1024 * 1024;
 
-    const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
         multiple: false,
         accept: {
@@ -26,15 +29,11 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
         maxSize: maxFileSize,
     });
 
-    const file = acceptedFiles[0] || null;
-
-    // Fungsi untuk mendapatkan icon berdasarkan tipe file
-    const getFileIcon = (file: File): string => {
-        if (file.type === 'application/pdf') {
-            return '/images/pdf.png';
-        }
-        // Untuk image, tampilkan preview
-        return '/images/pdf.png'; // fallback
+    // Fungsi untuk clear file
+    const handleClearFile = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setSelectedFile(null);
+        onFileSelect?.(null);
     };
 
     // Fungsi untuk mendapatkan nama tipe file
@@ -53,11 +52,11 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
             <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 <div className='space-y-6 cursor-pointer'>
-                    {file ? (
+                    {selectedFile ? (
                         <div className='uploader-selected-file' onClick={(e) => e.stopPropagation()}>
-                            {file.type.startsWith('image/') ? (
+                            {selectedFile.type.startsWith('image/') ? (
                                 <img
-                                    src={URL.createObjectURL(file)}
+                                    src={URL.createObjectURL(selectedFile)}
                                     alt="preview"
                                     className='size-10 object-cover rounded'
                                 />
@@ -67,19 +66,17 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                             <div className='flex items-center space-x-3'>
                                 <div>
                                     <p className='text-sm text-gray-700 font-medium truncate max-w-xs'>
-                                        {file.name}
+                                        {selectedFile.name}
                                     </p>
                                     <p className='text-sm text-gray-500'>
-                                        {getFileTypeName(file)} • {formatSize(file.size)}
+                                        {getFileTypeName(selectedFile)} • {formatSize(selectedFile.size)}
                                     </p>
                                 </div>
                             </div>
                             <button
+                                type="button"
                                 className='p-2 cursor-pointer'
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onFileSelect?.(null);
-                                }}
+                                onClick={handleClearFile}
                             >
                                 <img src="/icons/cross.svg" alt="remove" className='w-4 h-4' />
                             </button>

@@ -3,6 +3,7 @@ export const resumes: Resume[] = [
         id: "1",
         companyName: "Google",
         jobTitle: "Frontend Developer",
+        jobDescription: "Frontend developer position at Google", // ← TAMBAHKAN
         imagePath: "/images/resume_01.png",
         resumePath: "/resumes/resume-1.pdf",
         feedback: {
@@ -33,6 +34,7 @@ export const resumes: Resume[] = [
         id: "2",
         companyName: "Microsoft",
         jobTitle: "Cloud Engineer",
+        jobDescription: "Cloud engineer position at Microsoft", // ← TAMBAHKAN
         imagePath: "/images/resume_02.png",
         resumePath: "/resumes/resume-2.pdf",
         feedback: {
@@ -63,6 +65,7 @@ export const resumes: Resume[] = [
         id: "3",
         companyName: "Apple",
         jobTitle: "iOS Developer",
+        jobDescription: "iOS developer position at Apple", // ← TAMBAHKAN
         imagePath: "/images/resume_03.png",
         resumePath: "/resumes/resume-3.pdf",
         feedback: {
@@ -93,6 +96,7 @@ export const resumes: Resume[] = [
         id: "4",
         companyName: "Google",
         jobTitle: "Frontend Developer",
+        jobDescription: "Frontend developer position at Google", // ← TAMBAHKAN
         imagePath: "/images/resume_01.png",
         resumePath: "/resumes/resume-1.pdf",
         feedback: {
@@ -123,6 +127,7 @@ export const resumes: Resume[] = [
         id: "5",
         companyName: "Microsoft",
         jobTitle: "Cloud Engineer",
+        jobDescription: "Cloud engineer position at Microsoft", // ← TAMBAHKAN
         imagePath: "/images/resume_02.png",
         resumePath: "/resumes/resume-2.pdf",
         feedback: {
@@ -153,6 +158,7 @@ export const resumes: Resume[] = [
         id: "6",
         companyName: "Apple",
         jobTitle: "iOS Developer",
+        jobDescription: "iOS developer position at Apple", // ← TAMBAHKAN
         imagePath: "/images/resume_03.png",
         resumePath: "/resumes/resume-3.pdf",
         feedback: {

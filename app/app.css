@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
 @import "tw-animate-css";
+import 'flowbite/dist/flowbite.css';
+
 
 @theme {
   --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,

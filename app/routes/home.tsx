@@ -81,7 +81,7 @@
     };
 
     return (
-      <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+      <main className="bg-[url('/images/minimalist.png')] bg-cover">
         <Navbar
           showWipeData={showWipeData}
           onToggleWipe={() => setShowWipeData((s) => !s)}

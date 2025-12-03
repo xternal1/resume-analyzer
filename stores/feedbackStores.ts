@@ -131,7 +131,7 @@ export const useFeedbackStore = create<FeedbackState>((set, get) => ({
           }
         } catch (e) {
           // swallow; continue loading other parts
-          // console.warn("failed to read resume blob", e);
+          console.warn("failed to read resume blob", e);
         }
       }
 
@@ -144,7 +144,7 @@ export const useFeedbackStore = create<FeedbackState>((set, get) => ({
             get().setImageUrl(imgUrl);
           }
         } catch (e) {
-          // console.warn("failed to read image blob", e);
+          console.warn("failed to read image blob", e);
         }
       }
 
@@ -153,7 +153,7 @@ export const useFeedbackStore = create<FeedbackState>((set, get) => ({
         get().setFeedback(data.feedback as Feedback);
       }
     } catch (e) {
-      // console.error("loadFromKV failed", e);
+      console.error("loadFromKV failed", e);
       return;
     }
   },
@@ -167,9 +167,10 @@ export const useFeedbackStore = create<FeedbackState>((set, get) => ({
       // storage should still reference original paths if needed.
     };
     try {
-      await kv.put(`resume:${id}`, JSON.stringify(payload));
+      // FIXED: Changed from kv.put() to kv.set()
+      await kv.set(`resume:${id}`, JSON.stringify(payload));
     } catch (e) {
-      // console.error("persistToKV failed", e);
+      console.error("persistToKV failed", e);
       throw e;
     }
   },
